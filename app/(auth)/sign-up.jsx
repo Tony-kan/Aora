@@ -25,10 +25,9 @@ const SignUp = () => {
 
     try {
       const result = await createUser(form.email, form.password, form.username);
-      console.log("Register results : ", result);
 
       //set it to global state
-      Alert.alert("Error", result);
+
       router.replace("/home");
     } catch (error) {
       Alert.alert("Error", error.message);
