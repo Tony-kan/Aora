@@ -14,13 +14,14 @@ import { images } from "../../constants";
 import Trending from "../../components/Trending";
 import EmptyState from "../../components/EmptyState";
 import { useGlobalContext } from "../../context/GlobalProvider";
-import { getAllPosts } from "../../lib/appwrite";
+import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import { useAppwrite } from "../../lib/useAppwrite";
 import VideoCard from "../../components/VideoCard";
 
 const Home = () => {
   const { user } = useGlobalContext();
   const { data: posts, refetch } = useAppwrite(getAllPosts);
+  const { data: latestPosts } = useAppwrite(getLatestPosts);
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
@@ -38,7 +39,7 @@ const Home = () => {
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
           // <Text className="text-3xl text-white">{item.title}</Text>
-          <VideoCard video={item}/>
+          <VideoCard video={item} />
         )}
         ListHeaderComponent={() => (
           <View className="my-4 px-4 space-y-4">
@@ -65,7 +66,7 @@ const Home = () => {
                 Latest Videos
               </Text>
               <Trending
-                posts={[{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }] ?? []}
+                posts={latestPosts ?? []}
               />
             </View>
           </View>
