@@ -16,6 +16,7 @@ import CustomButton from "../../components/CustomButton";
 import { router } from "expo-router";
 import { createVideo } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
+import * as ImagePicker from "expo-image-picker";
 
 const Create = () => {
   const { user } = useGlobalContext();
@@ -29,7 +30,26 @@ const Create = () => {
     prompt: "",
   });
 
-  const openPicker = async (selectType) => {};
+  const openPicker = async (selectType) => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes:
+        selectType === "image"
+          ? ImagePicker.MediaTypeOptions.Images
+          : ImagePicker.MediaTypeOptions.Videos,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      if (selectType === "image") {
+        setForm({ ...form, thumbnail: result.assets[0] });
+      }
+
+      if (selectType === "video") {
+        setForm({ ...form, video: result.assets[0] });
+      }
+    }
+  };
 
   const submit = async () => {
     if (!form.prompt || !form.title || !form.thumbnail || !form.video) {
