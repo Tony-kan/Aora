@@ -1,9 +1,9 @@
-## 1.<a>🤖 Project Description : [Aora] </a>
+## 1. <a>🤖 Project Description : [Aora] </a>
 
 Aora is a revolutionary mobile application developed using React Native, designed to facilitate the sharing of AI-generated content, including videos and thumbnails.
 Aora empowers users to create, share, and discover content enhanced by AI, offering a unique and engaging experience.
 
-## 2.<a name="tech-stack">⚙️ Tech Stack</a>
+## 2. <a name="tech-stack">⚙️ Tech Stack</a>
 
 - React Native
 - Expo
@@ -11,7 +11,7 @@ Aora empowers users to create, share, and discover content enhanced by AI, offer
 - Animatable
 - Appwrite
   
-## 3.<a name="features">🔋 Features</a>
+## 3. <a name="features">🔋 Features</a>
 
 👉 **Onboarding Screen**: Engaging graphics and clear instructions welcome users to the app.
 
